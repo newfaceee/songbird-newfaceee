@@ -1,0 +1,36 @@
+.quiz-nav {
+  margin-bottom: 25px;
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    background-color: #008966;
+    border-radius: 5px;
+  }
+
+  &__item {
+    flex: auto;
+    text-align: center;
+    padding: 8px 12px;
+    user-select: none;
+    cursor: pointer;
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &--active {
+      background-color: #00bc8c;
+    }
+  }
+}
