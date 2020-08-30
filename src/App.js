@@ -1,40 +1,26 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { newGame } from "./redux/actions/game";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-import "./sass/App.scss";
-import DB from "./db.json";
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
 
-import {
-  Header,
-  QuizNav,
-  Question,
-  AnswerOptions,
-  GameOver,
-} from "./components";
-
-export const App = () => {
-  const dispatch = useDispatch();
-  const { isGameOver } = useSelector((state) => state);
-  React.useEffect(() => {
-    dispatch(newGame(DB));
-  }, [dispatch]);
-  if (isGameOver) {
-    return (
-      <div className="container">
-        <Header />
-        <QuizNav />
-        <GameOver />
-      </div>
-    );
-  } else {
-    return (
-      <div className="container">
-        <Header />
-        <QuizNav />
-        <Question />
-        <AnswerOptions />
-      </div>
-    );
-  }
-};
+export default App;
