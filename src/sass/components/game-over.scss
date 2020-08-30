@@ -1,0 +1,38 @@
+.game-over {
+  width: 100%;
+  background-color: #303030;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 50px 20px;
+
+  &__title {
+    text-align: center;
+    font-size: 75px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__text {
+    font-size: 18px;
+    text-align: center;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    background-color: #00bc8c;
+    border: none;
+    outline: none;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    &:hover {
+      background-color: #00efb2;
+    }
+  }
+}

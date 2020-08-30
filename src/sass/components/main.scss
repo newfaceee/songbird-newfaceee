@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+    background-color: #303030;
+    border-radius: 10px;
+    border: 1px solid #555;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+  .next-round-btn {
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #fff;
+    margin-top: 25px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    pointer-events: none;
+
+    &--enabled {
+      pointer-events: all;
+      background-color: #008966;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    &__item {
+      width: 100%;
+      margin-bottom: 20px;
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
