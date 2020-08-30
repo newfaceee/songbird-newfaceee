@@ -1,17 +1,14 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import classNames from 'classnames';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import classNames from "classnames";
 
-import { setRound, setRoundWon } from '../redux/actions/game';
-import BirdDetails from './BirdDetails';
+import { setRound, setRoundWon } from "../redux/actions/game";
+import BirdDetails from "./BirdDetails";
 
 const AnswerOptions = () => {
   const dispatch = useDispatch();
   const [birdDetails, setBirdDetails] = React.useState(null);
   const [currentScore, setCurrentScore] = React.useState(5);
-
-  const rightAnswerAudioRef = React.useRef(null);
-  const wrongAnswerAudioRef = React.useRef(null);
 
   const { currentQuestion: answerOptions, round, isRoundWon } = useSelector(
     (state) => state
@@ -20,9 +17,9 @@ const AnswerOptions = () => {
   const listItemRef = React.useRef(null);
 
   React.useEffect(() => {
-    const spanItems = listItemRef.current.querySelectorAll('span');
+    const spanItems = listItemRef.current.querySelectorAll("span");
     for (const span of spanItems) {
-      span.className = 'answer-options__state';
+      span.className = "answer-options__state";
     }
   }, [round]);
 
@@ -31,7 +28,7 @@ const AnswerOptions = () => {
       setBirdDetails(answerOption);
       return;
     }
-    const className = 'answer-options__state';
+    const className = "answer-options__state";
     const stateIndicator = evt.target.querySelector(`.${className}`);
 
     setBirdDetails(answerOption);
@@ -47,8 +44,6 @@ const AnswerOptions = () => {
       // states
       dispatch(setRoundWon(currentScore));
       setCurrentScore(5);
-      // console.log();
-      rightAnswerAudioRef.current.autoplay = true;
     } else if (
       // this if statement checks, if user clicked wrongAnswer(!) and
       // this click was first time on this option, then update the score
@@ -57,11 +52,6 @@ const AnswerOptions = () => {
     ) {
       stateIndicator.classList.add(`${className}--wrong`);
       setCurrentScore(currentScore - 1);
-      wrongAnswerAudioRef.current.play();
-
-      wrongAnswerAudioRef.current.play().catch((err) => {
-        console.log(err);
-      });
     }
   };
   const handleNextRoundClick = () => {
@@ -94,22 +84,12 @@ const AnswerOptions = () => {
       </section>
       <button
         onClick={handleNextRoundClick}
-        className={classNames('main__item', 'next-round-btn', {
-          'next-round-btn--enabled': isRoundWon,
+        className={classNames("main__item", "next-round-btn", {
+          "next-round-btn--enabled": isRoundWon,
         })}
       >
         Next Level
       </button>
-      <audio
-        preload="metadata"
-        ref={rightAnswerAudioRef}
-        className="right-answer-sound"
-      >
-        <source src="../assets/audio/bad.mp3" />
-      </audio>
-      <audio ref={wrongAnswerAudioRef} className="wrong-answer-sound">
-        <source src="../assets/audio/bad.mp3" />
-      </audio>
     </main>
   );
 };

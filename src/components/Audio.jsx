@@ -19,7 +19,6 @@ const Audio = ({ audioSrc }) => {
   const [rangeValue, setRangeValue] = React.useState(0);
   const [currentTime, setCurrentTime] = React.useState(0);
   const [volume, setVolume] = React.useState(100);
-  const [changedTime, setChangedTime] = React.useState(0);
 
   // refs
   const audioRef = React.useRef(null);
